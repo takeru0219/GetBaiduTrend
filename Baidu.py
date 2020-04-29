@@ -1,6 +1,7 @@
 import slackweb
 from bs4 import BeautifulSoup
 import requests
+slack_url = '' # incoming webhook
 
 # 取得 -> BeautifulSoupに渡す
 url = 'http://top.baidu.com/buzz?b=341&fr=topbuzz_b342'
@@ -22,7 +23,7 @@ for keyword_url, score in zip(data_array_keyword[0:10], data_array_score[2:12]):
     scores.append(score.text.strip())
 
 # Slackに流す
-slack = slackweb.Slack(url = 'https://hooks.slack.com/services/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')
+slack = slackweb.Slack(url = slack_url)
 attachments = []
 
 for word, url, score in zip(words, urls, scores):
