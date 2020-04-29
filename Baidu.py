@@ -19,7 +19,8 @@ scores = []
 
 for keyword_url, score in zip(data_array_keyword[0:10], data_array_score[2:12]):
     words.append(keyword_url.text)
-    urls.append(keyword_url.get('href'))
+    #urls.append(keyword_url.get('href')) #こっちは動的なURLではない
+    urls.append('http://www.baidu.com/s?wd=' + keyword_url.text)
     scores.append(score.text.strip())
 
 # Slackに流す
